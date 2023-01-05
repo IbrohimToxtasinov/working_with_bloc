@@ -5,15 +5,19 @@ class AreaCalcCubit extends Cubit<AreaCalcState> {
   AreaCalcCubit() : super(InitialAreaState(a: 10, b: 15));
 
   triangle(int a, int b) {
-    emit(TriangleState(a + b));
+    emit(TriangleState(a*b*0.5));
   }
 
   rectangle(int a, int b) {
-    RectangleState rectangleState = RectangleState(a - b);
+    RectangleState rectangleState = RectangleState(a * b);
     emit(rectangleState);
   }
 
-  circle(int a, int b) {
-    emit(CircleState(a * b));
+  circle(int a) {
+    emit(CircleState((a*a)*3.14));
   }
 }
+
+
+
+
