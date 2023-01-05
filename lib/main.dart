@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_cubit_part1/bloc/area_calc/area_calc_cubit.dart';
 import 'package:flutter_bloc_cubit_part1/bloc/calculator/calculator_cubit.dart';
 import 'package:flutter_bloc_cubit_part1/bloc/counter/counter_cubit.dart';
 import 'package:flutter_bloc_cubit_part1/bloc/text_maker/text_maker_cubit.dart';
-import 'package:flutter_bloc_cubit_part1/ui/calculator_page/calculator_page.dart';
 import 'package:flutter_bloc_cubit_part1/ui/homework/first_task.dart';
+import 'package:flutter_bloc_cubit_part1/ui/homework/second_task.dart';
+import 'package:flutter_bloc_cubit_part1/ui/second_page/second_page.dart';
 
 void main() {
   runApp(
@@ -19,6 +21,9 @@ void main() {
         BlocProvider(
           create: (context) => TextMakerCubit(),
         ),
+        BlocProvider(
+          create: (context) => AreaCalcCubit(),
+        ),
       ],
       child: const MyApp(),
     ),
@@ -28,7 +33,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -37,7 +41,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const FirstTask(),
+      home: const SecondTask(),
     );
   }
 }

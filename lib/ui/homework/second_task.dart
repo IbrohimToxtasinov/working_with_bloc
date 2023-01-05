@@ -1,49 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_cubit_part1/bloc/area_calc/area_calc_cubit.dart';
+import 'package:flutter_bloc_cubit_part1/bloc/area_calc/area_calc_state.dart';
 import 'package:flutter_bloc_cubit_part1/bloc/calculator/calculator_cubit.dart';
-import 'package:flutter_bloc_cubit_part1/bloc/calculator/calculator_state.dart';
 
-class CalculatorPage extends StatelessWidget {
-  const CalculatorPage({Key? key}) : super(key: key);
+class SecondTask extends StatelessWidget {
+  const SecondTask({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Calculator page"),
+          title: const Text("Task 2"),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            BlocBuilder<CalculatorCubit, CalculatorState>(
+            BlocBuilder<AreaCalcCubit, AreaCalcState>(
               builder: (context, state) {
-                if (state is AdditionState) {
+                if (state is CircleState) {
                   return Text(
-                    "This is Addition:${state.additionResult}",
+                    "This is circle:${state.circleResult}",
                     style: const TextStyle(
                       fontSize: 24,
                       color: Colors.black,
                     ),
                   );
-                } else if (state is SubtructionState) {
+                } else if (state is TriangleState) {
                   return Text(
-                    "This is sub:${state.subtructionResult}",
+                    "This is triangle:${state.triangleResult}",
                     style: const TextStyle(
                       fontSize: 24,
                       color: Colors.black,
                     ),
                   );
-                } else if (state is DivisionState) {
+                } else if (state is RectangleState) {
                   return Text(
-                    "This is div:${state.divisionResult}",
-                    style: const TextStyle(
-                      fontSize: 24,
-                      color: Colors.black,
-                    ),
-                  );
-                } else if (state is MultiplactionState) {
-                  return Text(
-                    "This is multi:${state.multiplactionResult}",
+                    "This is rectangle:${state.rectangleResult}",
                     style: const TextStyle(
                       fontSize: 24,
                       color: Colors.black,
@@ -59,31 +52,26 @@ class CalculatorPage extends StatelessWidget {
                 );
               },
             ),
+            const SizedBox(height: 30),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                IconButton(
+                ElevatedButton(
                     onPressed: () {
-                      BlocProvider.of<CalculatorCubit>(context).add(12, 12);
+                      BlocProvider.of<AreaCalcCubit>(context).circle(5);
                     },
-                    icon: Icon(Icons.add)),
-                IconButton(
+                    child : const Text("circle")),
+                ElevatedButton(
                     onPressed: () {
-                      BlocProvider.of<CalculatorCubit>(context).sub(12, 12);
+                      BlocProvider.of<AreaCalcCubit>(context).triangle(6, 6);
                     },
-                    icon: Icon(Icons.remove)),
-                IconButton(
+                    child : const Text("triangle")),
+                ElevatedButton(
                     onPressed: () {
-                      BlocProvider.of<CalculatorCubit>(context)
-                          .multiple(12, 12);
+                      BlocProvider.of<AreaCalcCubit>(context)
+                          .rectangle(6, 6);
                     },
-                    icon: Icon(Icons.ac_unit)),
-                IconButton(
-                    onPressed: () {
-                      BlocProvider.of<CalculatorCubit>(context)
-                          .division(12, 12);
-                    },
-                    icon: Icon(Icons.dnd_forwardslash)),
+                    child : const Text("rectangle")),
               ],
             )
           ],
