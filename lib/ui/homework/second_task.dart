@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_cubit_part1/bloc/area_calc/area_calc_cubit.dart';
 import 'package:flutter_bloc_cubit_part1/bloc/area_calc/area_calc_state.dart';
-import 'package:flutter_bloc_cubit_part1/bloc/calculator/calculator_cubit.dart';
 
 class SecondTask extends StatelessWidget {
   const SecondTask({Key? key}) : super(key: key);
