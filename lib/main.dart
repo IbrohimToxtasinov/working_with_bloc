@@ -7,7 +7,7 @@ import 'package:flutter_bloc_cubit_part1/bloc/counter/counter_cubit.dart';
 import 'package:flutter_bloc_cubit_part1/bloc/text_maker/text_maker_cubit.dart';
 import 'package:flutter_bloc_cubit_part1/data/repositories/companies_repository.dart';
 import 'package:flutter_bloc_cubit_part1/data/services/api_service.dart';
-import 'package:flutter_bloc_cubit_part1/ui/companies/companies_screen.dart';
+import 'package:flutter_bloc_cubit_part1/ui/companies/companies_screen_with_bloc_consumer.dart';
 
 void main() {
   runApp(
@@ -26,7 +26,7 @@ void main() {
           create: (context) => AreaCalcCubit(),
         ),
         BlocProvider(
-          create: (context) => CompanyCubit(CompanyRepository(apiService: ApiService()))..fetchAllCompanies(),
+          create: (context) => CompanyCubit(CompanyRepository(apiService: ApiService())),
         ),
       ],
       child: const MyApp(),
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const CompaniesScreen(),
+      home: const CompaniesScreenWithBlocConsumer(),
     );
   }
 }

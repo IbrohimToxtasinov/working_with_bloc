@@ -6,7 +6,7 @@ import 'package:flutter_bloc_cubit_part1/data/repositories/companies_repository.
 
 class CompanyCubit extends Cubit<CompanyState> {
   CompanyCubit(this.companyRepository) : super(InitialCompanyState()) {
-    // 1  fetchAllAlbums();
+    fetchAllCompanies();
   }
 
   final CompanyRepository companyRepository;
