@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_cubit_part1/bloc/area_calc/area_calc_cubit.dart';
 import 'package:flutter_bloc_cubit_part1/bloc/calculator/calculator_cubit.dart';
+import 'package:flutter_bloc_cubit_part1/bloc/company/company_cubit.dart';
 import 'package:flutter_bloc_cubit_part1/bloc/counter/counter_cubit.dart';
 import 'package:flutter_bloc_cubit_part1/bloc/text_maker/text_maker_cubit.dart';
-import 'package:flutter_bloc_cubit_part1/ui/homework/first_task.dart';
-import 'package:flutter_bloc_cubit_part1/ui/homework/second_task.dart';
-import 'package:flutter_bloc_cubit_part1/ui/second_page/second_page.dart';
+import 'package:flutter_bloc_cubit_part1/data/repositories/companies_repository.dart';
+import 'package:flutter_bloc_cubit_part1/data/services/api_service.dart';
+import 'package:flutter_bloc_cubit_part1/ui/companies/companies_screen.dart';
 
 void main() {
   runApp(
@@ -23,6 +24,9 @@ void main() {
         ),
         BlocProvider(
           create: (context) => AreaCalcCubit(),
+        ),
+        BlocProvider(
+          create: (context) => CompanyCubit(CompanyRepository(apiService: ApiService()))..fetchAllCompanies(),
         ),
       ],
       child: const MyApp(),
@@ -41,7 +45,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SecondTask(),
+      home: const CompaniesScreen(),
     );
   }
 }

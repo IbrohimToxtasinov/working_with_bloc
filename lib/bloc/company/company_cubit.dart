@@ -11,13 +11,13 @@ class CompanyCubit extends Cubit<CompanyState> {
 
   final CompanyRepository companyRepository;
 
-  fetchAllAlbums() async {
+  fetchAllCompanies() async {
     //loading
     emit(LoadCompaniesInProgress());
     MyResponse myResponse = await companyRepository.getAllCompanies();
     if (myResponse.error.isEmpty) {
       //success
-      emit(LoadCompaniesInSuccess(albums: myResponse.data));
+      emit(LoadCompaniesInSuccess(data: myResponse.data));
     } else {
       //error
       emit(LoadCompaniesInFailure(errorText: myResponse.error));

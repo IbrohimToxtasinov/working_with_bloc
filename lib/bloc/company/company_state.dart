@@ -7,9 +7,9 @@ class InitialCompanyState extends CompanyState {}
 class LoadCompaniesInProgress extends CompanyState {}
 
 class LoadCompaniesInSuccess extends CompanyState {
-  LoadCompaniesInSuccess({required this.albums});
+  LoadCompaniesInSuccess({required this.data});
 
-  final List<Data> albums;
+  final List<Data> data;
 }
 
 class LoadCompaniesInFailure extends CompanyState {
