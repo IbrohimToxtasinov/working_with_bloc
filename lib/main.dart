@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_cubit_part1/bloc/area_calc/area_calc_cubit.dart';
 import 'package:flutter_bloc_cubit_part1/bloc/calculator/calculator_cubit.dart';
-import 'package:flutter_bloc_cubit_part1/bloc/company/company_cubit.dart';
+import 'package:flutter_bloc_cubit_part1/bloc/get_all_companies/get_all_companies_cubit.dart';
 import 'package:flutter_bloc_cubit_part1/bloc/counter/counter_cubit.dart';
 import 'package:flutter_bloc_cubit_part1/bloc/text_maker/text_maker_cubit.dart';
 import 'package:flutter_bloc_cubit_part1/data/repositories/companies_repository.dart';

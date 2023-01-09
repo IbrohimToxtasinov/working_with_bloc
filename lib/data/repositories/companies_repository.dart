@@ -7,4 +7,6 @@ class CompanyRepository {
   final ApiService apiService;
 
   Future<MyResponse> getAllCompanies() => apiService.getAllCompanies();
+
+  Future<MyResponse> getSingleAlbumById({required int id}) => apiService.getSingleCompany(id: id);
 }

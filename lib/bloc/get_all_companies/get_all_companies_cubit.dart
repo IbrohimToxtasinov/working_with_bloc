@@ -1,11 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_cubit_part1/bloc/company/company_state.dart';
+import 'package:flutter_bloc_cubit_part1/bloc/get_all_companies/get_all_companies_state.dart';
 import 'package:flutter_bloc_cubit_part1/data/models/my_response.dart';
 import 'package:flutter_bloc_cubit_part1/data/repositories/companies_repository.dart';
 
 
-class CompanyCubit extends Cubit<CompanyState> {
-  CompanyCubit(this.companyRepository) : super(InitialCompanyState()) {
+class CompaniesCubit extends Cubit<CompaniesState> {
+  CompaniesCubit(this.companyRepository) : super(InitialCompaniesState()) {
     fetchAllCompanies();
   }
 

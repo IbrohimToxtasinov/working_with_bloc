@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_cubit_part1/bloc/company/company_cubit.dart';
-import 'package:flutter_bloc_cubit_part1/bloc/company/company_state.dart';
+import 'package:flutter_bloc_cubit_part1/bloc/get_all_companies/get_all_companies_cubit.dart';
+import 'package:flutter_bloc_cubit_part1/bloc/get_all_companies/get_all_companies_state.dart';
 import 'package:flutter_bloc_cubit_part1/data/repositories/companies_repository.dart';
 import 'package:flutter_bloc_cubit_part1/data/services/api_service.dart';
 
@@ -11,14 +11,14 @@ class CompaniesScreenWithBloBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CompanyCubit(CompanyRepository(apiService: ApiService())),
+      create: (context) => CompaniesCubit(CompanyRepository(apiService: ApiService())),
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Companies with Bloc Builder"),
         ),
-        body: BlocBuilder<CompanyCubit, CompanyState>(
+        body: BlocBuilder<CompaniesCubit, CompaniesState>(
             builder: (context, state) {
-          if (state is InitialCompanyState) {
+          if (state is InitialCompaniesState) {
             return const Center(
               child: Text("hozircha data yo'q"),
             );

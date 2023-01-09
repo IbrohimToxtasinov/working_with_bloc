@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_cubit_part1/bloc/company/company_cubit.dart';
-import 'package:flutter_bloc_cubit_part1/bloc/company/company_state.dart';
+import 'package:flutter_bloc_cubit_part1/bloc/get_all_companies/get_all_companies_cubit.dart';
+import 'package:flutter_bloc_cubit_part1/bloc/get_all_companies/get_all_companies_state.dart';
 import 'package:flutter_bloc_cubit_part1/ui/companies/companies_screen_with_bloc_builder.dart';
 import 'package:flutter_bloc_cubit_part1/utils/my_utils.dart';
 
@@ -28,9 +28,9 @@ class CompaniesScreenWithBlocConsumer extends StatelessWidget {
           ],
           title: const Text("Companies with Bloc Consumer"),
         ),
-        body: BlocConsumer<CompanyCubit, CompanyState>(
+        body: BlocConsumer<CompaniesCubit, CompaniesState>(
           builder: (context, state) {
-            if (state is InitialCompanyState) {
+            if (state is InitialCompaniesState) {
               return const Center(
                 child: Text("Hali data yo'q"),
               );
