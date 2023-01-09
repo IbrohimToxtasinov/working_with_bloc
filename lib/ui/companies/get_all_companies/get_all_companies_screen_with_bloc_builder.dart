@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_cubit_part1/bloc/get_all_companies/get_all_companies_cubit.dart';
+import 'package:flutter_bloc_cubit_part1/bloc/get_all_companies/get_all_companies_event.dart';
 import 'package:flutter_bloc_cubit_part1/bloc/get_all_companies/get_all_companies_state.dart';
 import 'package:flutter_bloc_cubit_part1/data/repositories/companies_repository.dart';
 import 'package:flutter_bloc_cubit_part1/data/services/api_service.dart';
@@ -14,6 +15,13 @@ class CompaniesScreenWithBloBuilder extends StatelessWidget {
       create: (context) => CompaniesCubit(CompanyRepository(apiService: ApiService())),
       child: Scaffold(
         appBar: AppBar(
+          actions: [
+            IconButton(
+                onPressed: () {
+                  BlocProvider.of<CompaniesCubit>(context).add(FetchAllAlbums());
+                },
+                icon: const Icon(Icons.upload))
+          ],
           title: const Text("Companies with Bloc Builder"),
         ),
         body: BlocBuilder<CompaniesCubit, CompaniesState>(

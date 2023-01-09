@@ -1,17 +1,17 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_cubit_part1/bloc/get_all_companies/get_all_companies_event.dart';
 import 'package:flutter_bloc_cubit_part1/bloc/get_all_companies/get_all_companies_state.dart';
 import 'package:flutter_bloc_cubit_part1/data/models/my_response.dart';
 import 'package:flutter_bloc_cubit_part1/data/repositories/companies_repository.dart';
 
-
-class CompaniesCubit extends Cubit<CompaniesState> {
+class CompaniesCubit extends Bloc<CompaniesEvent, CompaniesState> {
   CompaniesCubit(this.companyRepository) : super(InitialCompaniesState()) {
-    fetchAllCompanies();
+    on<FetchAllAlbums>(_fetchAllAlbums);
   }
 
   final CompanyRepository companyRepository;
 
-  fetchAllCompanies() async {
+  _fetchAllAlbums(FetchAllAlbums event, Emitter<CompaniesState> emit) async {
     //loading
     emit(LoadCompaniesInProgress());
     MyResponse myResponse = await companyRepository.getAllCompanies();
